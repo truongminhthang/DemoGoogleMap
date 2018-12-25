@@ -20,6 +20,7 @@
 		06CB4CA14AB729655C7ECD5C /* Pods-DemoGoogleMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoGoogleMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoGoogleMap/Pods-DemoGoogleMap.debug.xcconfig"; sourceTree = "<group>"; };
 		4CA87A562B9FCEA611D05258 /* Pods_DemoGoogleMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoGoogleMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D1C2DD3585B900F3E5542A /* Pods-DemoGoogleMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoGoogleMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoGoogleMap/Pods-DemoGoogleMap.release.xcconfig"; sourceTree = "<group>"; };
+		9812645921D25973005DFAB8 /* Route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Route.gpx; sourceTree = "<group>"; };
 		982A607921C8A4F5001F4B56 /* DemoGoogleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoGoogleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		982A607C21C8A4F5001F4B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		982A607E21C8A4F5001F4B56 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 			children = (
 				982A607C21C8A4F5001F4B56 /* AppDelegate.swift */,
 				982A607E21C8A4F5001F4B56 /* MapViewController.swift */,
+				9812645921D25973005DFAB8 /* Route.gpx */,
 				982DF25C21CA372A000586E2 /* Alert.swift */,
 				982A608021C8A4F5001F4B56 /* Main.storyboard */,
 				982A608321C8A4F5001F4B56 /* Assets.xcassets */,

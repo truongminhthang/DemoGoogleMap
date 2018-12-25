@@ -13,7 +13,12 @@ import GooglePlaces
 
 class MapViewController: UIViewController {
     @IBOutlet weak var getPlacesButton: UIBarButtonItem!
-    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var mapView: GMSMapView! {
+        didSet {
+            mapView.isMyLocationEnabled = true
+            mapView.settings.myLocationButton = true
+        }
+    }
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,8 @@ class MapViewController: UIViewController {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = 400
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.allowsBackgroundLocationUpdates = true
     }
     
@@ -35,8 +42,9 @@ class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let lastLocation = locations.last else {return}
-        let camera = GMSCameraPosition.camera(withTarget: lastLocation.coordinate, zoom: 18)
-        mapView.camera = camera
+        let camera = GMSCameraPosition.camera(withTarget: lastLocation.coordinate, zoom: 15)
+//        mapView.camera = camera
+        mapView.animate(to: camera)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
