@@ -8,17 +8,23 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
+import GooglePlacePicker
 
 
 class MapViewController: UIViewController {
-    @IBOutlet weak var getPlacesButton: UIBarButtonItem!
     @IBOutlet weak var mapView: GMSMapView! {
         didSet {
             mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
         }
     }
+    var likelyPlaces: [GMSPlace] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    @IBOutlet weak var tableView: UITableView!
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +40,13 @@ class MapViewController: UIViewController {
         locationManager.allowsBackgroundLocationUpdates = true
     }
     
-
+    @IBAction func pickPlace(_ sender: UIButton) {
+        
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker =  GMSPlacePickerViewController(config: config)
+        present(placePicker, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -43,7 +55,6 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let lastLocation = locations.last else {return}
         let camera = GMSCameraPosition.camera(withTarget: lastLocation.coordinate, zoom: 15)
-//        mapView.camera = camera
         mapView.animate(to: camera)
     }
     
@@ -57,7 +68,37 @@ extension MapViewController: CLLocationManagerDelegate {
             break
         }
     }
+//    func listLikelyPlaces() {
+//        likelyPlaces = []
+//        GMSPlacesClient.shared().currentPlace { (placeLikelihood, error) in
+//            guard error == nil, placeLikelihood != nil  else {
+//                print("Current place error: \(error!.localizedDescription)")
+//                return
+//            }
+//            
+//            self.likelyPlaces = placeLikelihood!.likelihoods.map({ (likelihood) -> GMSPlace in
+//                likelihood.place
+//            })
+//        }
+//        
+//    }
 }
+
+// MARK: - <#Mark#>
+
+//extension MapViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return likelyPlaces.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        cell.textLabel?.text = likelyPlaces[indexPath.row].addressComponents?.reduce("", { (result, address) -> String in
+//            return result + " \(address)"
+//        })
+//        return cell
+//    }
+//}
 
 
 

@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let googleMapAPI = "AIzaSyA7uqmmmje-dSOeJ5Ycq5qCS_3JSOV63pM"
+    //AIzaSyA7uqmmmje-dSOeJ5Ycq5qCS_3JSOV63pM
+    // AIzaSyA7uqmmmje-dSOeJ5Ycq5qCS_3JSOV63pM
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
